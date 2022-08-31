@@ -1,0 +1,24 @@
+{
+  "name": "foodbucket",
+  "version": "1.0.0",
+  "description": "An app for foodies by a foodie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sushantkadam15/foodBucket.git"
+  },
+  "author": "Sushant Kadam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sushantkadam15/foodBucket/issues"
+  },
+  "homepage": "https://github.com/sushantkadam15/foodBucket#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.4"
+  }
+}
