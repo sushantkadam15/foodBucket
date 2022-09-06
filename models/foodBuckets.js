@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const foodBucketSchema = new Schema({
-  dishName: String,
+  dish: String,
   restaurant: String,
   address: String,
   city: String,

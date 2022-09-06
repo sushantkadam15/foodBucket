@@ -1,11 +1,13 @@
 /*
-Sample Data for the Database 
+Sample Data for the Database - 2000
   */
 const mongoose = require("mongoose");
 const foodBuckets = require("./models/foodBuckets");
 
 // Connecting to Database
 const restaurantData = require("./public/data/restaurant-list.json"); //Import data from system
+const dishes = require("./public/data/Dish.json");
+const res = require("express/lib/response");
 mongoose.connect("mongodb://localhost:27017/food-bucket", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -14,35 +16,36 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Error:"));
 db.once("open", () => console.log("Connection Open - MongoDB"));
 
-const seeding = async () => {
-  for (restaurant of restaurantData) {
-    /**Converting Categories String to array */
-    const categoriesArray = restaurant.categories.split(",");
-    const {
-      name,
-      address,
-      city,
-      postalCode,
-      province,
-      country,
-      websites,
-      latitude,
-      longitude,
-    } = restaurant;
+/**
+ *  The JSON file contains some empty data. newDishes contains filtered values with dish prices above $10
+ */
+const newDishes = dishes.filter((dish) => {
+  if (dish.name && dish.highest_price > 10) {
+    return true;
+  }
+});
+
+for (let i = 0; i <= 2000; i++) {
+  const restaurant = restaurantData[i];
+  const dish = newDishes[i];
+  const seeding = async () => {
     const restaurantPush = new foodBuckets({
-      restaurant: name,
-      address: address,
-      city: city,
-      postalCode: postalCode,
-      province: province,
-      country: country,
-      websites: websites,
-      latitude: latitude,
-      longitude: longitude,
-      category: categoriesArray,
+      dish: dish.name,
+      restaurant: restaurant.name,
+      address: restaurant.address,
+      city: restaurant.city,
+      postalCode: restaurant.postalCode,
+      province: restaurant.province,
+      country: restaurant.country,
+      price: dish.highest_price,
+      websites: restaurant.websites,
+      latitude: restaurant.latitude,
+      longitude: restaurant.longitude,
+      category: restaurant.categories.split(","),
     });
     await restaurantPush
       .save()
-      .then(() => console.log(`${name} added to the database`));
-  }
-};
+      .then(() => console.log(`${dish.name} added to the database`));
+  };
+  seeding();
+}
