@@ -1,4 +1,102 @@
-html, body{
-    font-family: 'Roboto', sans-serif !important;
-    background-color: antiquewhite;
+html,
+body {
+  font-family: "Roboto", sans-serif !important;
+  background-color: #ffffff;
+}
+
+h1,
+button {
+  color: #1f1235;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1f1235;
+}
+
+a,
+a:active {
+  color: #ff6e6c;
+}
+
+::selection {
+  background-color: rgba(103, 86, 140, 0.4);
+  color: #ffffff;
+}
+.navbar,
+.navbar-brand {
+  background-color: #f4effc;
+  color: #67568c;
+  border-radius: 5px;
+}
+.navbar-nav .nav-link.active {
+  color: #1f1235;
+  font-weight: 500;
+}
+.btn-primary {
+  background-color: #ff6e6c;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #67568c;
+}
+
+.card {
+  box-shadow: rgba(103, 86, 140, 0.12) 0px 1px 3px,
+    rgba(0, 0, 0, 0.24) 0px 1px 1px;
+    max-width: 250px;
+    min-width: 150px;
+}
+.card:hover, .card:active{
+    transform: scale(1.015);
+    transition: transform .3s;
+}
+.card button:hover{
+    position: relative;
+    top: 1px;
+}
+.card-title {
+  text-transform: capitalize;
+  color: #67568c;
+}
+
+.footer{
+    background-color: #f4effc;
+    color: #1f1235;
+    font-size: .7rem;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    padding:30px 0px 10px 0px;
+    text-align: center;
+}
+
+/* dishinfo.ejs   */
+.categories{
+  background-color: #e2daeb;
+  color: #1b1325;
+}
+.categories:hover{
+  background-color: #ff6e6c;
+  transition: all .5s;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+
+}
+
+@media only screen and (max-width: 567px) {
+    /* phones */
+    .card{
+        width: 40vw;
+    }
+    
+}
+
+@media only screen and (max-width: 567px) and (orientation: portrait) {
+    /* portrait phones */
 }

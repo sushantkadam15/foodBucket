@@ -15,6 +15,7 @@ const foodBucketSchema = new Schema({
   longitude: Number,
   description: String,
   category: [String],
+  imgURL: String
 });
 
 module.exports = mongoose.model('Bucket', foodBucketSchema);

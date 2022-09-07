@@ -42,6 +42,7 @@ for (let i = 0; i <= 2000; i++) {
       latitude: restaurant.latitude,
       longitude: restaurant.longitude,
       category: restaurant.categories.split(","),
+      imgURL: 'https://p.kindpng.com/picc/s/79-798754_hoteles-y-centros-vacacionales-dish-placeholder-hd-png.png'
     });
     await restaurantPush
       .save()

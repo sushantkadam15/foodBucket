@@ -1,13 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Bucket</title>
-    <%- include('partials/framework-cdn') %> 
-</head>
-<body>
-    <h1>Hello!</h1>
-</body>
+<!-- Contains Head, CDNs and NavBar -->
+<%- include('partials/head.ejs') %>
+<!-- Feed Starts -->
+    <div class="container my-4">
+      <section>
+        <div class="d-flex flex-wrap justify-content-around">
+          <% for(let dish of dishes){%>
+          <div class="card m-2">
+            <img
+              src="<%=dish.imgURL%>"
+              alt="<%= dish.dish %>"
+              class="card-img-top"
+            />
+            <div class="card-body text-center">
+              <div class="card-title fs-5"><%= dish.dish %></div>
+              <p class="card-text">
+                <span class="fw-semibold d-block fs-6"
+                  ><%=dish.restaurant%></span
+                >
+                <span class="fw-lighter"
+                  ><%= `${dish.city}, ${dish.country}` %></span
+                >
+              </p>
+              <form action="/home/<%=dish.id%>" method="get">
+                <button class="btn btn-primary px-3" type="submit">More</button>
+              </form>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </section>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
 </html>
