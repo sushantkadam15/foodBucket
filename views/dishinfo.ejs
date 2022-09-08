@@ -2,33 +2,41 @@
 <%- include('partials/head.ejs') %>
 
 <div class="container">
-    <section>
-        <h1 class="mb-4"><%= (dish.dish).toUpperCase() %> </h1>
-        <div class="d-md-flex flex-wrap justify-content-between">
-            <div class="row text-center p-1 border rounded col-md-4">
-            <img src="<%= dish.imgURL %> " alt="<%= dish.dish %> " class="mg-fluid">
+  <section class="pb-4">
+    <h1 class="mb-4"><%= (dish.dish).toUpperCase() %></h1>
+    <div class="d-md-flex flex-wrap justify-content-between">
+      <div class="row text-center p-1 col-md-4">
+        <img
+          src="<%= dish.imgURL %> "
+          alt="<%= dish.dish %> "
+          class="mg-fluid"
+        />
+      </div>
+      <div>
+        <h2>$<%= dish.price %></h2>
+        <h3><%= dish.restaurant %></h3>
+        <p class="fw-light">
+          <i class="bi bi-geo-alt"></i><%= dish.address %>,<br />
+          <%= dish.city %>, <%= dish.province %> <%= dish.country %> <br />
+          <%= dish.postalCode %> <br />
+          <a href="<%= dish.websites %>" target="_blank"> Website </a>
+        </p>
+      </div>
+  </section>
+  <section class="mb-4 ">
+    <hr>
+    <div class="row">
+        <div class="py-sm-3 col-lg-4">
+            <h4>Categories</h4>
+            <div class="hstack gap-3 d-flex flex-wrap">
+              <% for(let category of dish.category) {%>
+              <div class="row border rounded  mx-1 categories">
+                <div><%= category %></div>
+              </div>
+              <% } %>
             </div>
-            <div class="col-md-6 align-self-end">
-                <h2>$<%= dish.price %> </h2>
-                <h3><%= dish.restaurant %> </h3>
-                <p class="fw-light"><i class="bi bi-geo-alt"></i><%= dish.address %>,<br> <%= dish.city %>, <%= dish.province %> <%= dish.country %> <br> <%= dish.postalCode %> <br>
-                <a href="<%= dish.websites %>" target="_blank"> Website </a>
-                </p>
-            </div>
-            <div class="py-sm-3">
-                <h4>Categories</h4>
-                <div class="hstack gap-3">
-                    <% for(let category of dish.category) {%>
-                        <div class="border rounded px-1 categories"> <%= category %> </div> 
-                        <% } %> 
-                </div>
-                
-            </div>
-
-
+          </div>
         </div>
-        
-        
-
-    </section>
+    </div>
+  </section>
 </div>

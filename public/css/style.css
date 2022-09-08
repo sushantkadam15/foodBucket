@@ -1,3 +1,5 @@
+/* Common Elements */
+
 html,
 body {
   font-family: "Roboto", sans-serif !important;
@@ -44,59 +46,100 @@ a:active {
   background-color: #67568c;
 }
 
+.footer {
+  background-color: #f4effc;
+  color: #1f1235;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  padding: 30px 0px 10px 0px;
+  text-align: center;
+}
+.add-button {
+  position: fixed;
+  z-index: 1;
+  bottom: 2vh;
+  right: 3vh;
+  text-align: center;
+}
+.add-button button {
+  font-size: 2rem;
+  border-radius: 30%;
+  border: none;
+  color: #67568c;
+}
+.add-button button:hover,
+.add-button button:active {
+  color: #ff6e6c;
+}
+
+/* index.ejs */
 .card {
   box-shadow: rgba(103, 86, 140, 0.12) 0px 1px 3px,
     rgba(0, 0, 0, 0.24) 0px 1px 1px;
-    max-width: 250px;
-    min-width: 150px;
+  max-width: 250px;
+  min-width: 150px;
 }
-.card:hover, .card:active{
-    transform: scale(1.015);
-    transition: transform .3s;
+.card:hover,
+.card:active {
+  transform: scale(1.015);
+  transition: transform 0.3s;
 }
-.card button:hover{
-    position: relative;
-    top: 1px;
+.card button:hover {
+  position: relative;
+  top: 1px;
 }
 .card-title {
   text-transform: capitalize;
   color: #67568c;
 }
 
-.footer{
-    background-color: #f4effc;
-    color: #1f1235;
-    font-size: .7rem;
-    letter-spacing: 1px;
-    margin: 0 auto;
-    padding:30px 0px 10px 0px;
-    text-align: center;
-}
-
 /* dishinfo.ejs   */
-.categories{
+.categories {
   background-color: #e2daeb;
   color: #1b1325;
+  font-size: 0.9rem;
 }
-.categories:hover{
+.categories:hover {
   background-color: #ff6e6c;
-  transition: all .5s;
+  transition: all 0.5s;
   cursor: pointer;
 }
 
-@media only screen and (min-width: 768px) {
-    /* tablets and desktop */
+/* CSS for different Screen Sizes */
 
+@media only screen and (min-width: 768px) {
+  /* tablets and desktop */
+
+  .add-button button {
+    padding: 0;
+    font-size: 3.5rem;
+  }
+  /*** Home And Navigation button removed on large display*/
+  .no-btn-lg {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 567px) {
-    /* phones */
-    .card{
-        width: 40vw;
-    }
-    
+  /* phones */
+  .card {
+    width: 45vw;
+  }
+  .add-button {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    bottom: 0vh;
+    right: 0vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-top: #1f1235 1px solid;
+    border-top-right-radius: 90%;
+    border-top-left-radius: 90%;
+    padding: 10px 0 2px 0;
+  }
 }
 
 @media only screen and (max-width: 567px) and (orientation: portrait) {
-    /* portrait phones */
+  /* portrait phones */
 }

@@ -3,13 +3,16 @@
 <!-- Feed Starts -->
     <div class="container my-4">
       <section>
-        <div class="d-flex flex-wrap justify-content-around">
+        <div class="row d-flex justify-content-around">
+          <!--  -->
           <% for(let dish of dishes){%>
-          <div class="card m-2">
+          <div class="col-5 card m-2 p-0"> 
+            <!--  -->
             <img
               src="<%=dish.imgURL%>"
               alt="<%= dish.dish %>"
-              class="card-img-top"
+              class="card-img-top m-0 h-75" 
+              style="object-fit: cover;"
             />
             <div class="card-body text-center">
               <div class="card-title fs-5"><%= dish.dish %></div>
