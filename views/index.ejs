@@ -2,12 +2,11 @@
 <%- include('partials/head.ejs') %>
 <!-- Feed Starts -->
     <div class="container my-4">
+      <!-- Dish Display Cards -->
       <section>
-        <div class="row d-flex justify-content-around">
-          <!--  -->
+        <div class="row d-flex justify-content-start">
           <% for(let dish of dishes){%>
-          <div class="col-5 card m-2 p-0"> 
-            <!--  -->
+          <div class="col-5 card mx-auto my-2 p-0"> 
             <img
               src="<%=dish.imgURL%>"
               alt="<%= dish.dish %>"

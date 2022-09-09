@@ -16,6 +16,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add Dish Form Page
+app.get('/home/add', (req, res) => res.render('new-dish'));
+// app.post('/home/add', (req, res) => {
+
+// })
+
 // Show Dish Details 
 
 app.get('/home/:id', async (req, res) => {
@@ -25,9 +31,10 @@ app.get('/home/:id', async (req, res) => {
 })
 
 /** Route for User Home / Index */
+
 app.get('/', (req, res) => res.redirect('/home'));
 app.get('/home', async (req, res) => {
-    const dishes = await foodBuckets.find({})
+    const dishes = await foodBuckets.find({}, null, {limit: 50}) //Displays first 50 results
     res.render('index', {dishes})
 });
 

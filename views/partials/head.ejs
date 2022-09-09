@@ -31,63 +31,86 @@
       rel="stylesheet"
     />
 
+    <!-- Tagify - https://github.com/yairEO/tagify -->
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
     <!-- My STYLE.CSS -->
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg mb-4 d-flex justify-content-around">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/"
-          ><img
-            src="/img/foodBucket-Logo.png"
-            class="mx-2"
-            style="height: 2rem"
-          />foodBucket</a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><i class="bi bi-person-circle"></i> Profile</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"
-                ><i class="bi bi-info-circle-fill"></i> About</a
-              >
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Brisket"
-              aria-label="Search"
-            />
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
+    <!-- Top Navigation Bar -->
+    <section>
+      <nav class="navbar navbar-expand-lg mb-4 d-flex justify-content-around">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/home"
+            ><img
+              src="/img/foodBucket-Logo.png"
+              class="mx-2"
+              style="height: 2rem"
+            />foodBucket</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="bi bi-person-circle"></i> Profile</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="bi bi-info-circle-fill"></i> About</a
+                >
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Brisket"
+                aria-label="Search"
+              />
+              <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+          </div>
         </div>
+      </nav>
+    </section>
+
+    <!-- Quick Access Buttons Mainly for Cellphones -->
+
+    <section>
+      <div class="add-button">
+        <form action="/home" method="get">
+          <button class="btn btn-floating no-btn-lg" type="submit">
+            <i class="bi bi-house-door-fill"></i>
+          </button>
+        </form>
+        <form action="/home/add" method="get">
+          <button type="submit" class="btn btn-floating">
+            <i class="bi bi-plus-circle-fill"></i>
+          </button>
+        </form>
+        <form action="" method="get">
+          <button class="btn btn-floating no-btn-lg">
+            <i class="bi bi-person-circle"></i>
+          </button>
+        </form>
       </div>
-    </nav>
-    <div class="add-button">
-      <button class="btn btn-floating no-btn-lg">
-        <i class="bi bi-house-door-fill"></i>
-      </button>
-      <button type="button" class="btn btn-floating">
-        <i class="bi bi-plus-circle-fill"></i>
-      </button>
-      <button class="btn btn-floating no-btn-lg">
-        <i class="bi bi-person-circle"></i>
-      </button>
-    </div>
+    </section>

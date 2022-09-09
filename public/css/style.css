@@ -106,7 +106,17 @@ a:active {
   cursor: pointer;
 }
 
-/* CSS for different Screen Sizes */
+/* new-dish.ejs */
+
+/* https://yaireo.github.io/tagify/#section-different-look */
+.tags-customLook{
+  --tag-bg: #67568c;
+  --tag-hover: #ff6e6c;
+  --tag-text-color: #fff;
+  --tag-text-color--edit: #67568cc7;
+}
+
+/* --------------------- CSS for different Screen Sizes ----------------- */
 
 @media only screen and (min-width: 768px) {
   /* tablets and desktop */
@@ -124,7 +134,7 @@ a:active {
 @media only screen and (max-width: 567px) {
   /* phones */
   .card {
-    width: 45vw;
+    width: 46vw;
   }
   .add-button {
     display: flex;

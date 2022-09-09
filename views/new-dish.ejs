@@ -1,0 +1,241 @@
+<!-- Contains Head, CDNs and NavBar Quick access buttons -->
+<%-include('partials/head.ejs') %>
+
+
+
+    <!-- Form for adding new dish to db.foodBucket.buckets  -->
+    <div class="container" style="height: 100vh">
+      <section class="d-flex justify-content-center">
+        <form class="row g-3 needs-validation w-75 pb-4" novalidate method="post" action="/">
+
+            <!-- dish name -->
+           <div class="col-md-5">
+            <label for="dish" class="form-label"
+              ><i class="bi bi-cup-hot"></i> Dish</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="dish"
+              name="dish"
+              placeholder="Butter Garlic Shrimps"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+           <!-- Price -->
+           <div class="col-md-2">
+            <label for="price" class="form-label"
+              ><i class="bi bi-cup-hot"></i> Price</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              name="price"
+              placeholder="26.89"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- Restaurant name -->
+
+          <div class="col-md-5">
+            <label for="dish" class="form-label"
+              ><i class="bi bi-house-heart"></i> Restaurant</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="restaurant"
+              name="restaurant"
+              placeholder="The Keg Steakhouse & Bar"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- Address / Street -->
+          <div class="col-md-7">
+            <label for="address" class="form-label"
+              ><i class="bi bi-signpost-split"></i> Street</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              name="address"
+              placeholder="560 King St W"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- City -->
+          <div class="col-md-3">
+            <label for="city" class="form-label"
+              ><i class="bi bi-building"></i> City</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              name="city"
+              placeholder="Toronto"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+           <!-- Province -->
+   
+           <div class="col-md-2">
+            <label for="province" class="form-label"
+              ><i class="bi bi-layout-wtf"></i> Province</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="province"
+              name="province"
+              placeholder="Ontario"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- Postal Code -->
+   
+          <div class="col-md-2">
+            <label for="postalCode" class="form-label"
+              ><i class="bi bi-mailbox"></i> Postal Code</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="postalCode"
+              name="postalCode"
+              placeholder="M5V 1M3"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- Country -->
+   
+          <div class="col-md-2">
+            <label for="country" class="form-label"
+              ><i class="bi bi-flag"></i> Country</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              name="country"
+              placeholder="CA"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- Website -->
+          <div class="col-md-8">
+            <label for="websites" class="form-label"
+              ><i class="bi bi-link-45deg"></i> Website</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="websites"
+              name="websites"
+              placeholder="https://kegsteakhouse.com/en/locations/toronto-king-west"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- ImgURL -->
+          <div class="col-md-12">
+            <label for="imgURL" class="form-label"
+              ><i class="bi bi-file-image"></i> Image URL</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="imgURL"
+              name="imgURL"
+              placeholder="https://www.onceuponachef.com/images/2014/03/Easy-Garlic-Butter-Shrimp-1.jpg"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <!-- category -->
+          <div class="col-md-12">
+            <label for="category" class="form-label"
+              ><i class="bi bi-bookmark-plus"></i> Tags</label
+            >
+            <input
+              type="text"
+              class="form-control tags-customLook"
+              id="category"
+              name="category"
+              placeholder="Use , for separating the tags."
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+
+          <!-- description -->
+          <div class="col-md-12">
+            <label for="description" class="form-label"
+              ><i class="bi bi-card-text"></i> Description</label
+            >
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Write something..."></textarea>
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Add Dish</button>
+          </div>
+        </form>
+    </section>
+</div>
+
+
+    <script>
+
+        // Form input validation for making sure the feild is not empty
+
+    (function () {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+
+    //   Tags Input
+    var categories = document.querySelector('input[name=category]');
+    new Tagify(categories)
+
+
+
+    </script>
+  </body>
+</html>
