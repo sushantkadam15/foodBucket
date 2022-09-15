@@ -6,8 +6,7 @@
     <!-- Form for adding new dish to db.foodBucket.buckets  -->
     <div class="container" style="height: 100vh">
       <section class="d-flex justify-content-center">
-        <form class="row g-3 needs-validation w-75 pb-4" novalidate method="POST" action="/home">
-
+        <form class="row g-3 needs-validation w-75 pb-4" novalidate method="POST" action="/home/<%= dish._id %>?_method=PATCH">
             <!-- dish name -->
            <div class="col-md-5">
             <label for="dish" class="form-label"
@@ -19,6 +18,7 @@
               id="dish"
               name="dish"
               placeholder="Butter Garlic Shrimps"
+              value="<%- dish.dish %> "
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -35,6 +35,7 @@
               id="price"
               name="price"
               placeholder="26.89"
+              value="<%= dish.price %>"
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -52,6 +53,7 @@
               id="restaurant"
               name="restaurant"
               placeholder="The Keg Steakhouse & Bar"
+              value="<%= dish.restaurant %>"
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -68,6 +70,7 @@
               id="address"
               name="address"
               placeholder="560 King St W"
+              value="<%= dish.address %>"
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -84,6 +87,7 @@
               id="city"
               name="city"
               placeholder="Toronto"
+              value="<%= dish.city %>"
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -101,6 +105,7 @@
               id="province"
               name="province"
               placeholder="Ontario"
+              value="<%= dish.province %>"
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -118,6 +123,7 @@
               id="postalCode"
               name="postalCode"
               placeholder="M5V 1M3"
+              value="<%= dish.postalCode %>"
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -135,6 +141,7 @@
               id="country"
               name="country"
               placeholder="CA"
+              value="<%= dish.country %>"
               required
             />
             <div class="valid-feedback">Looks good!</div>
@@ -151,6 +158,7 @@
               id="websites"
               name="websites"
               placeholder="https://kegsteakhouse.com/en/locations/toronto-king-west"
+              value="<%= dish.websites %>"
             />
             <div class="valid-feedback">Optional</div>
           </div>
@@ -165,6 +173,7 @@
               class="form-control"
               id="imgURL"
               name="imgURL"
+              value="<%= dish.imgURL %>"
               placeholder="https://www.onceuponachef.com/images/2014/03/Easy-Garlic-Butter-Shrimp-1.jpg"
             />
             <div class="valid-feedback">Optional but recommended</div>
@@ -181,6 +190,7 @@
               id="category"
               name="category"
               placeholder='Use "," for separating the tags.'
+              value="<%= dish.category %>"
             />
             <div class="valid-feedback">Optional</div>
           </div>
@@ -191,50 +201,73 @@
             <label for="description" class="form-label"
               ><i class="bi bi-card-text"></i> Description</label
             >
-            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Write something..."></textarea>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Write something..."><%= dish.description %></textarea>
             <div class="valid-feedback">Optionl</div>
           </div>
 
           <div class="col-12">
-            <button class="btn btn-primary" type="submit">Add Dish</button>
+            <button class="btn btn-primary" type="submit">Update Dish</button>
           </div>
         </form>
     </section>
-</div>
 
+    <!-- Delete Button -->
+
+    <section class="d-flex justify-content-center pb-4">
+      <form action="/home/<%= dish._id %>?_method=DELETE" method="post">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <i class="bi bi-trash3"></i>
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to delete this dish?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="submit" class="btn btn-danger">Yes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+      
+    <!-- ---------------------- Script ------------------------ -->
 
     <script>
-
-        // Form input validation for making sure the feild is not empty
-
+    // Form input validation for making sure the feild is not empty
     (function () {
-        "use strict";
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll(".needs-validation");
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms).forEach(function (form) {
-          form.addEventListener(
-            "submit",
-            function (event) {
-              if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-
-              form.classList.add("was-validated");
-            },
-            false
-          );
-        });
-      })();
-
+      "use strict";
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll(".needs-validation");
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
     //   Creates tag using Tagify
-    var categories = document.querySelector('input[name=category]');
+    const categories = document.querySelector("input[name=category]");
     let tagify = new Tagify(categories, {
-      originalInputValueFormat: valuesArr => valuesArr.map(item => item.value)
-    })
+      originalInputValueFormat: (valuesArr) => valuesArr.map((item) => item.value) //returns string instead of JSON
+    });
     </script>
   </body>
 </html>

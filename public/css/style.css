@@ -106,6 +106,19 @@ a:active {
   cursor: pointer;
 }
 
+/* Edit Button */
+
+.edit{
+  font-size: 2rem;
+  padding: 0;
+  border: none;
+  color: #ff6e6c;
+}
+.edit:hover, .edit:active{
+  background:none;
+  color: #67568c;
+}
+
 /* new-dish.ejs */
 
 /* https://yaireo.github.io/tagify/#section-different-look */
@@ -125,10 +138,6 @@ a:active {
     padding: 0;
     font-size: 3.5rem;
   }
-  /*** Home And Navigation button removed on large display*/
-  .no-btn-lg {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 567px) {
@@ -138,15 +147,15 @@ a:active {
   }
   .add-button {
     display: flex;
-    justify-content: space-evenly;
+    justify-content:center;
     width: 100%;
     bottom: 0vh;
     right: 0vh;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-top: #1f1235 1px solid;
-    border-top-right-radius: 90%;
-    border-top-left-radius: 90%;
     padding: 10px 0 2px 0;
+  }
+
+  .add-button button{
+    font-size: 2.5rem;
   }
 }
 
