@@ -3,11 +3,12 @@ const app = express();
 const port = 3300;
 const mongoose = require("mongoose");
 const path = require("path");
-const { send } = require("process");
 const methodOverride = require("method-override"); // for Patch and Delete Methods
 const foodBuckets = require("./models/foodBuckets"); // Mongo DB Schema and Model
 const morgan = require("morgan"); //Middleware
-const AppError = require("./AppError");
+const { AppError, errorHandlerASYNC } = require("./customErrorHandler");
+const Joi = require("joi");
+const { dishValidationSchema } = require("./models/dataValidationSchemaJOI");
 
 mongoose.connect("mongodb://localhost:27017/food-bucket", {
   useNewUrlParser: true,
@@ -27,66 +28,113 @@ app.use(express.urlencoded({ extended: true })); // parses the url for post requ
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
-//
 app.use(methodOverride("_method"));
 
+// Validating dish data upon update and creation
+const validateDishData = (req, res, next) => {
+  const { error } = dishValidationSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new AppError(400, msg);
+  } else {
+    next();
+  }
+};
+
 /*-----------------------------------------
- *********** Routes *********************** */
+ *********** Routes *********************** 
+ ----------------------------------------*/
 
 // Add New Dish Form Page
 app.get("/home/add", (req, res) => res.render("new-dish"));
-app.post("/home", async (req, res) => {
-  //POST is listening to /home because the form action is set to /home in ejs file.
-  const newDishData = req.body;
-  newDishData.category = newDishData.category.split(",");
-  const newDish = new foodBuckets(newDishData);
-  await newDish.save();
-  res.redirect(`home/${newDish._id}`);
-});
+app.post(
+  "/home",
+  validateDishData,
+  errorHandlerASYNC(async (req, res) => {
+    //POST is listening to /home because the form action is set to /home in ejs file.
+    const dishData = req.body;
+    dishData.category = newDishData.category.split(",");
+    const dish = new foodBuckets(dishData);
+    await dish.save();
+    res.redirect(`home/${dish._id}`);
+  })
+);
 
 //Edit existing dish
-app.get("/home/:id/edit", async (req, res) => {
-  const { id } = req.params;
-  const dish = await foodBuckets.findById(id);
-  res.render("update", { dish });
-});
+app.get(
+  "/home/:id/edit",
+  errorHandlerASYNC(async (req, res) => {
+    const { id } = req.params;
+    const dish = await foodBuckets.findById(id);
+    if (!dish) {
+      throw new AppError(
+        404,
+        "The dish you are trying to update is no longer available."
+      );
+    } else {
+      res.render("update", { dish });
+    }
+  })
+);
 
-app.patch("/home/:id", async (req, res) => {
-  const { id } = req.params;
-  const dishData = req.body;
-  dishData.category = dishData.category.split(","); // Converting string to array
-  await foodBuckets.findByIdAndUpdate(id, dishData);
-  res.redirect(`/home/${id}`);
-});
+app.patch(
+  "/home/:id",
+  validateDishData,
+  errorHandlerASYNC(async (req, res) => {
+    const { id } = req.params;
+    const dishData = req.body;
+    dishData.category = dishData.category.split(","); // Converting string to array
+    await foodBuckets.findByIdAndUpdate(id, dishData);
+    res.redirect(`/home/${id}`);
+  })
+);
 
 //Delete Dish
-app.delete("/home/:id", async (req, res) => {
-  const { id } = req.params;
-  await foodBuckets.findByIdAndDelete(id);
-  res.redirect("/home");
-});
+app.delete(
+  "/home/:id",
+  errorHandlerASYNC(async (req, res) => {
+    const { id } = req.params;
+    await foodBuckets.findByIdAndDelete(id);
+    res.redirect("/home");
+  })
+);
 
 // Show Dish Details
-app.get("/home/:id", async (req, res, next) => {
-  const { id } = req.params;
-  const dish = await foodBuckets.findById(id);
-  if (!dish) {
-    next(
-      new AppError(404, "The dish you are looking for is no longer available.")
-    );
-  } else {
-    res.render("dishinfo", { dish });
-  }
-});
+app.get(
+  "/home/:id",
+  errorHandlerASYNC(async (req, res) => {
+    const { id } = req.params;
+    const dish = await foodBuckets.findById(id);
+    if (!dish) {
+      throw new AppError(
+        404,
+        "The Dish you are looking for is no longer available"
+      );
+    } else {
+      res.render("dishinfo", { dish });
+    }
+  })
+);
 
 /** Route for User Home / Index */
 app.get("/", (req, res) => res.redirect("/home"));
-app.get("/home", async (req, res) => {
-  const dishes = await foodBuckets.find({}, null, { limit: 50 }); //Displays first 50 results
-  res.render("index", { dishes });
-});
+app.get(
+  "/home",
+  errorHandlerASYNC(async (req, res) => {
+    const dishes = await foodBuckets.find({}, null, { limit: 50 }); //Displays first 50 results
+    if (!dishes) {
+      throw new AppError(404, "Something went wrong. Please try again later.");
+    } else {
+      res.render("index", { dishes });
+    }
+  })
+);
 
-//Error Handling
+/** ERROR HANDLING */
+
+app.all("*", (req, res, next) => {
+  next(new AppError(404, "Page not found!"));
+});
 app.use((err, req, res, next) => {
   const { status = 500, message = "Something went wrong..." } = err; //{a = 1} = num  sets the default value to 1
   res.status(status).render("error", { status, message });

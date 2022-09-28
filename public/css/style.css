@@ -73,7 +73,15 @@ a:active {
   color: #ff6e6c;
 }
 
-/* index.ejs */
+/* Hide Arrows From Input Number */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* index.ejs ***********/
 .card {
   box-shadow: rgba(103, 86, 140, 0.12) 0px 1px 3px,
     rgba(0, 0, 0, 0.24) 0px 1px 1px;
@@ -128,6 +136,7 @@ a:active {
   --tag-text-color: #fff;
   --tag-text-color--edit: #67568cc7;
 }
+
 
 /* --------------------- CSS for different Screen Sizes ----------------- */
 
