@@ -15,7 +15,11 @@ const foodBucketSchema = new Schema({
   longitude: Number,
   description: String,
   category: [String],
-  imgURL: String
+  imgURL: String,
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: "Review"
+  }]
 });
 
-module.exports = mongoose.model('Bucket', foodBucketSchema);
+module.exports = mongoose.model("Bucket", foodBucketSchema);

@@ -1,5 +1,7 @@
 const Joi = require("joi");
 
+//data validator for JavaScript https://joi.dev/
+
 module.exports.dishValidationSchema = Joi.object({
   dish: Joi.string().required(),
   restaurant: Joi.string().required(),

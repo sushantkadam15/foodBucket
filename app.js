@@ -116,6 +116,8 @@ app.get(
   })
 );
 
+
+
 /** Route for User Home / Index */
 app.get("/", (req, res) => res.redirect("/home"));
 app.get(
