@@ -114,6 +114,25 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
+/* Review Section */
+#review-section{
+  background-color: #f4effc;
+  width: 95vw;
+  margin: auto;
+}
+.review-head{
+  background-color: #67568c;
+  border-radius: 5px;
+}
+.review-head h2{
+  color: #ffffff;
+}
+
+.review-card{
+  background-color: #e2daeb ;
+  border: none;
+}
+
 /* Edit Button */
 
 .edit{

@@ -5,10 +5,17 @@ const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override"); // for Patch and Delete Methods
 const foodBuckets = require("./models/foodBuckets"); // Mongo DB Schema and Model
+const Review = require("./models/reviews");
 const morgan = require("morgan"); //Middleware
 const { AppError, errorHandlerASYNC } = require("./customErrorHandler");
 const Joi = require("joi");
-const { dishValidationSchema } = require("./models/dataValidationSchemaJOI");
+const {
+  dishValidationSchema,
+} = require("./models/datavalidation/foodBucketJOI");
+const {
+  reviewValidationSchema,
+} = require("./models/datavalidation/reviewsJOI");
+const reviews = require("./models/reviews");
 
 mongoose.connect("mongodb://localhost:27017/food-bucket", {
   useNewUrlParser: true,
@@ -30,9 +37,20 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
-// Validating dish data upon update and creation
+// Validating data upon update and creation
+
 const validateDishData = (req, res, next) => {
   const { error } = dishValidationSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new AppError(400, msg);
+  } else {
+    next();
+  }
+};
+
+const validateReviewData = (req, res, next) => {
+  const { error } = reviewValidationSchema.validate(req.body);
   if (error) {
     const msg = error.details.map((el) => el.message).join(",");
     throw new AppError(400, msg);
@@ -104,19 +122,32 @@ app.get(
   "/home/:id",
   errorHandlerASYNC(async (req, res) => {
     const { id } = req.params;
-    const dish = await foodBuckets.findById(id);
+    const star = ["", "★", "★★", "★★★", "★★★★", "★★★★★"]
+    const dish = await foodBuckets.findById(id).populate('reviews');
     if (!dish) {
       throw new AppError(
         404,
         "The Dish you are looking for is no longer available"
       );
     } else {
-      res.render("dishinfo", { dish });
+      res.render("dishinfo", { dish, star });
     }
   })
 );
 
-
+// Leave reviews on dishes
+app.post(
+  "/home/:id/review",
+  validateReviewData,
+  errorHandlerASYNC(async (req, res) => {
+    const dish = await foodBuckets.findById(req.params.id);
+    const newReview = new Review(req.body);
+    dish.reviews.push(newReview);
+    await newReview.save();
+    await dish.save();
+    res.redirect(`/home/${dish._id}`);
+  })
+);
 
 /** Route for User Home / Index */
 app.get("/", (req, res) => res.redirect("/home"));

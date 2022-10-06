@@ -17,4 +17,4 @@ module.exports.dishValidationSchema = Joi.object({
   description: Joi.string(),
   category: Joi.string(),
   imgURL: Joi.string().uri().allow('').optional(),
-});
+}).required();
