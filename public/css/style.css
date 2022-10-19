@@ -117,7 +117,7 @@ input::-webkit-inner-spin-button {
 /* Review Section */
 #review-section{
   background-color: #f4effc;
-  width: 95vw;
+  width: 90vw;
   margin: auto;
 }
 .review-head{
@@ -131,6 +131,12 @@ input::-webkit-inner-spin-button {
 .review-card{
   background-color: #e2daeb ;
   border: none;
+}
+
+.review-card-delete button{
+  border: none;
+  font-size: smaller;
+  color: #67568c;
 }
 
 /* Edit Button */

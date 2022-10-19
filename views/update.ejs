@@ -6,7 +6,7 @@
     <!-- Form for adding new dish to db.foodBucket.buckets  -->
     <div class="container" style="height: 100vh">
       <section class="d-flex justify-content-center">
-        <form class="row g-3 needs-validation w-75 pb-4" novalidate method="POST" action="/home/<%= dish._id %>?_method=PATCH">
+        <form class="row g-3 needs-validation w-75 pb-4" novalidate method="POST" action="/foodBucket/<%= dish._id %>?_method=PATCH">
             <!-- dish name -->
            <div class="col-md-5">
             <label for="dish" class="form-label"
@@ -214,7 +214,7 @@
     <!-- Delete Button -->
 
     <section class="d-flex justify-content-center pb-4">
-      <form action="/home/<%= dish._id %>?_method=DELETE" method="post">
+      <form action="/foodBucket/<%= dish._id %>?_method=DELETE" method="post">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <i class="bi bi-trash3"></i>
         </button>

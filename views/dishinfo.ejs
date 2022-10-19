@@ -14,7 +14,7 @@
           <h1><%= (dish.dish).toUpperCase() %></h1>
         </div>
         <div class="col-2">
-          <form action="/home/<%= dish._id %>/edit" method="get">
+          <form action="/foodBucket/<%= dish._id %>/edit" method="get">
             <button type="submit" class="btn btn-outline-success edit" title="Edit">
               <i class="bi bi-pencil-square"></i>
             </button>
@@ -62,7 +62,7 @@
     <div class="row">
     <hr>
       <!-- Form for review -->
-      <form action="/home/<%=dish._id%>/review" method="post" class="mb-3 mt-3 needs-validation" novalidate>
+      <form action="/foodBucket/<%=dish._id%>/review" method="post" class="mb-3 mt-3 needs-validation" novalidate>
         <h5 class="mb-3"> Leave a Review</h5>
         <div class="form-group d-flex justify-content-between">
           <label for="rating"> How would you rate your experience?</label>
@@ -97,24 +97,29 @@
     <div class="review-head">
       <h2 class="p-3">Reviews</h2>
     </div>
-    <div class="container my-3">
-    </div>
-    <div class="d-flex flex-wrap justify-content-center">
-      <% for(review of dish.reviews){ %>
-        <div class ="review-card m-2 p-2 w-75">
-          <div class="review-header p-2">
-            <%= star[review.rating] %> 
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-center">
+        <% for(review of dish.reviews){ %>
+          <div class ="review-card m-3 p-2 col-sm-12 col-lg-5">
+            <div class="review-header p-2">
+              <%= star[review.rating] %> 
+            </div>
+            <div class="review-body p-2">
+              <%= review.comment %> 
+            <footer class="blockquote-footer mt-2"> <%= review.date %> </footer>
+            </div>
+            <div class="d-flex justify-content-end review-card-delete">
+              <form action="/foodBucket/<%= dish._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-outline-dark"><i class="bi bi-trash"></i></button>
+              </form>
+            </div>
           </div>
-          <div class="review-body p-2">
-            <%= review.comment %> 
-          <footer class="blockquote-footer mt-2"> <%= review.date %> </footer>
-          </div>
-        </div>
-       <%}%>
+         <%}%>
+      </div>
     </div>
+    
   </section>
 <%}%>
-
 <!-- Client Side Validation for Reviews Form -->
 <script>
   (function () {
