@@ -10,7 +10,7 @@ const morgan = require("morgan"); //Middleware
 const { AppError, errorHandlerASYNC } = require("./customErrorHandler");
 
 const foodBucketRoutes = require("./routes/foodBucketRoutes");
-const reviewsRoutes = require('./routes/reviewsRoutes')
+const reviewsRoutes = require("./routes/reviewsRoutes");
 
 mongoose.connect("mongodb://localhost:27017/food-bucket", {
   useNewUrlParser: true,
@@ -29,11 +29,11 @@ app.listen(port, () => console.log(`Listening to ${port}`));
 app.use(express.urlencoded({ extended: true })); // parses the url for post request
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
-app.use('/foodBucket', foodBucketRoutes) // Routes for foodBucket
-app.use('/foodBucket/:id/reviews', reviewsRoutes)
-
+app.use("/foodBucket", foodBucketRoutes); // Routes for foodBucket
+app.use("/foodBucket/:id/reviews", reviewsRoutes);
 
 app.get("/", (req, res) => res.redirect("/foodBucket"));
 app.get(

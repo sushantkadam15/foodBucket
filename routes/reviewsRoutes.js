@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router({mergeParams: true}); //Mergeparams for Cannot read properties of null (reading 'reviews') || Express router keeps the params seperate. You have to enable it using merge param
+const router = express.Router({ mergeParams: true }); //Mergeparams for Cannot read properties of null (reading 'reviews') || Express router keeps the params seperate. You have to enable it using merge param
 const foodBuckets = require("../models/foodBuckets"); // Mongo DB Schema and Model
 const Review = require("../models/reviews"); // Review Schema
 const { AppError, errorHandlerASYNC } = require("../customErrorHandler");
@@ -38,12 +38,12 @@ router.post(
   "/",
   validateReviewData,
   errorHandlerASYNC(async (req, res) => {
-    console.log(req.body)
-    console.log(req.params)
+    console.log(req.body);
+    console.log(req.params);
     const dish = await foodBuckets.findById(req.params.id);
-    console.log(dish)
+    console.log(dish);
     const newReview = new Review(req.body);
-    console.log(newReview)
+    console.log(newReview);
     dish.reviews.push(newReview);
     await newReview.save();
     await dish.save();
