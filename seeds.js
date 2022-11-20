@@ -8,10 +8,18 @@ const foodBuckets = require("./models/foodBuckets");
 const restaurantData = require("./public/data/restaurant-list.json"); //Import data from system
 const dishes = require("./public/data/Dish.json");
 const res = require("express/lib/response");
-mongoose.connect("mongodb://localhost:27017/food-bucket", {
+
+const {uri} = require('./databaseAuthentication')
+
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+// mongoose.connect("mongodb://localhost:27017/food-bucket", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Error:"));
 db.once("open", () => console.log("Connection Open - MongoDB"));
