@@ -8,8 +8,7 @@
 Icon
 
 # Authentication file # 
-databaseAuthentication.js
-
+config.js
 
 # Thumbnails
 ._*

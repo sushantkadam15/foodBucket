@@ -12,18 +12,12 @@ const { AppError, errorHandlerASYNC } = require("./customErrorHandler");
 const foodBucketRoutes = require("./routes/foodBucketRoutes");
 const reviewsRoutes = require("./routes/reviewsRoutes");
 
-const {uri} = require('./databaseAuthentication')
+const {uri} = require('./config')
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-
-
-// mongoose.connect("mongodb://localhost:27017/food-bucket", {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
 
 //  Database Connection Test
 const db = mongoose.connection;
