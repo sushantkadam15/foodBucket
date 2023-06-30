@@ -11,8 +11,9 @@ const { AppError, errorHandlerASYNC } = require("./customErrorHandler");
 
 const foodBucketRoutes = require("./routes/foodBucketRoutes");
 const reviewsRoutes = require("./routes/reviewsRoutes");
+const uri = "mongodb+srv://foodbucket2023:foodbucket2023@foodbucket.uxnjcjb.mongodb.net/";
 
-const {uri} = require('./config')
+// const {uri} = require('./config')
 
 mongoose.connect(uri, {
   useNewUrlParser: true,

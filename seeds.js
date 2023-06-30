@@ -9,7 +9,7 @@ const restaurantData = require("./public/data/restaurant-list.json"); //Import d
 const dishes = require("./public/data/Dish.json");
 const res = require("express/lib/response");
 
-const {uri} = require('./databaseAuthentication')
+const uri = 'mongodb+srv://foodbucket2023:foodbucket2023@foodbucket.uxnjcjb.mongodb.net/';
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
