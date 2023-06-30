@@ -1,10 +1,6 @@
 # foodBucket
 
 
-<h1>foodBucket</h1>
-
-
-  <h1>Food Bucket</h1>
 <h2><a href="https://sushantkadam15-organic-giggle-xrrx4q6654r296x5-3300.preview.app.github.dev/foodBucket">App Demo</a></h2>
 
   <h2>Introduction</h2>
