@@ -7,7 +7,7 @@
 
   <p>Food Bucket is a web application that allows users to document and share their favorite food experiences from different restaurants. It serves as a digital bucket list for food enthusiasts to keep track of the tasty dishes they want to try and the restaurants they wish to visit.</p>
 
-  <strong>NOTE: The app development is still under progress.</strong>
+  <strong>NOTE: This demo app development is still in development.</strong>
 
   <h2>Features</h2>
 
