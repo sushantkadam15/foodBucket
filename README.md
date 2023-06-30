@@ -1,31 +1,35 @@
 # foodBucket
 
-https://sushantkadam15-organic-giggle-xrrx4q6654r296x5-3300.preview.app.github.dev/foodBucket
+
 <h1>foodBucket</h1>
 
-  <img src="./img/foodBucket-Logo.png" alt="foodBucket Logo">
+
+  <h1>Food Bucket</h1>
+<h2><a href="https://sushantkadam15-organic-giggle-xrrx4q6654r296x5-3300.preview.app.github.dev/foodBucket">App Demo</a></h2>
 
   <h2>Introduction</h2>
 
-  <p>foodBucket is a web application for discovering and sharing delicious recipes. It allows users to browse a variety of recipes, create their own recipes, and connect with a community of food enthusiasts.</p>
+  <p>Food Bucket is a web application that allows users to document and share their favorite food experiences from different restaurants. It serves as a digital bucket list for food enthusiasts to keep track of the tasty dishes they want to try and the restaurants they wish to visit.</p>
+
+  <strong>NOTE: The app development is still under progress.</strong>
 
   <h2>Features</h2>
 
   <ul>
-    <li>Search for recipes based on keywords</li>
-    <li>Create and save your own recipes</li>
-    <li>Browse a wide range of recipes from different categories</li>
-    <li>Interact with the foodBucket community by liking and commenting on recipes</li>
-    <li>Personalized user profiles with saved recipes and activity history</li>
+    <li>Discover a curated collection of delicious dishes and restaurants.</li>
+    <li>Create a personalized food bucket list with your desired dishes and restaurants.</li>
+    <li>Upload photos and descriptions of the dishes you have tried.(URL)</li>
+    <li>Rate and review dishes and restaurants based on your experience.</li>
+    <li>Search for dishes and restaurants by cuisine, location, or keywords.</li>
+    <li>Follow other users and get inspired by their food bucket lists.</li>
+    <li>Bookmark favorite dishes and restaurants for future reference.</li>
   </ul>
 
   <h2>Installation</h2>
 
   <ol>
-    <li>Clone the repository:</li>
+    <li>Clone the repository</li>
   </ol>
-
-  <pre><code>git clone https://github.com/your-username/foodBucket.git</code></pre>
 
   <ol start="2">
     <li>Install the dependencies:</li>
@@ -37,44 +41,36 @@ https://sushantkadam15-organic-giggle-xrrx4q6654r296x5-3300.preview.app.github.d
     <li>Start the application:</li>
   </ol>
 
-  <pre><code>npm start</code></pre>
+  <pre><code>node app.js</code></pre>
 
-  <p>Open your web browser and visit <a href="http://localhost:3000">http://localhost:3000</a> to access foodBucket.</p>
+  <p>Open your web browser and visit <a href="http://localhost:3000">http://localhost:3000</a> to access Food Bucket.</p>
 
   <h2>Usage</h2>
 
   <p>Once the application is running, you can perform the following actions:</p>
 
   <ul>
-    <li>Browse recipes by using the search bar or exploring the different categories.</li>
-    <li>Click on a recipe to view its details, including the ingredients and instructions.</li>
-    <li>Create your own recipe by clicking the "Add" button and filling out the required information.</li>
-    <li>Like and comment on recipes to engage with the community.</li>
-    <li>Update your profile information and view your saved recipes.</li>
+    <li>Explore the collection of delicious dishes and restaurants by browsing the featured items or using the search functionality. (In progress)</li>
+    <li>Create your personal food bucket list by adding dishes and restaurants you want to try.</li>
+    <li>Click on a dish or restaurant to view its details, including photos, descriptions, ratings, and reviews.</li>
+    <li>Upload your own food experiences by providing photos URLs, descriptions, and ratings for the dishes you have tried.</li>
+    <li>Rate and review dishes and restaurants to share your feedback and recommendations.</li>
+    <li>Connect with other users by following them and sharing your food bucket lists.(In Progress)</li>
+    <li>Bookmark favorite dishes and restaurants to easily access them later. (In Progress)</li>
   </ul>
 
-  <h2>Contributing</h2>
-
-  <p>Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request. When contributing to this project, please follow the coding conventions and guidelines specified in the repository.</p>
-
-  <h2>License</h2>
-
-  <p>This project is licensed under the MIT License.</p>
-
-  <h2>Contact</h2>
-
-  <p>For any questions or inquiries, feel free to reach out to the project maintainer:</p>
-
-  <ul>
-    <li>Sushant Kadam</li>
-    <li>Email: sushant@example.com</li>
-    <li>Twitter: <a href="https://twitter.com/sushantk">@sushantk</a></li>
-  </ul>
+ 
 
   <h2>Acknowledgements</h2>
 
+  <p>This project was made possible thanks to the following resources:</p>
+
   <ul>
+    <li>Node.js - <a href="https://nodejs.org">https://nodejs.org</a></li>
+    <li>Express.js - <a href="https://expressjs.com">https://expressjs.com</a></li>
+    <li>MongoDB - <a href="https://www.mongodb.com">https://www.mongodb.com</a></li>
     <li>Bootstrap CSS framework - <a href="https://getbootstrap.com">https://getbootstrap.com</a></li>
     <li>Bootstrap Icons - <a href="https://icons.getbootstrap.com">https://icons.getbootstrap.com</a></li>
-    <li>Tagify - <a href="https://github.com/yairEO/tagify">https://github.com/yairEO/tagify</a></li>
+    <li>Axios</li>
   </ul>
+
