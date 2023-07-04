@@ -1,8 +1,5 @@
 # foodBucket
 
-
-<h2><a href="https://sushantkadam15-organic-giggle-xrrx4q6654r296x5-3300.preview.app.github.dev/foodBucket">App Demo</a></h2>
-
   <h2>Introduction</h2>
 
   <p>Food Bucket is a web application that allows users to document and share their favorite food experiences from different restaurants. It serves as a digital bucket list for food enthusiasts to keep track of the tasty dishes they want to try and the restaurants they wish to visit.</p>
